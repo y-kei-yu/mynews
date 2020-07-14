@@ -32,9 +32,24 @@ class ProfileController extends Controller
       return  redirect('admin/profile/create');
     }
     
-    public function edit()
+    public function index (Request $request)
     {
-        return view('admin.profile.edit');
+        $cond_title = $request->cond_title;
+        if($cond_title !='') {
+            $post = Profile::where('title', $cond_title)->get();
+        } else {
+            $posts = Profile::all();
+        }
+        return view ('admin.profile.index', ['posts' => $posts, 'cond_title' =>$cond_title]);
+    }
+    
+    public function edit(Request $request)
+    {
+        $profile = profile::find($request->id);
+        if (empty($profile)) {
+            abort(404);
+        }
+        return view('admin.profile.edit',['$profile_form' => $profile]);
     }
     
     public function update()
