@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                    <label class="col-md-2" for="gender">性別</label>
+                    <label class="col-md-2" for="gender">性別(gender)</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender"  value="男性">
                             <label class="form-check-label">男性</label>
