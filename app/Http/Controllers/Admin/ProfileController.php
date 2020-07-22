@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
-use App\ProfileHistory;
+use App\Profile_History;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
@@ -70,10 +70,10 @@ class ProfileController extends Controller
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
       
-       $profilehistory = new ProfileHistory;
-       $profilehistory->profile_id = $profile->id;
-       $profilehistory->edited_at = Carbon::now();
-       $profilehistory->save();
+       $profile_history = new Profile_History;
+       $profile_history->profile_id = $profile->id;
+       $profile_history->edited_at = Carbon::now();
+       $profile_history->save();
 
         return redirect('admin/profile');
     }
